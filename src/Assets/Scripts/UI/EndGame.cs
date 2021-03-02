@@ -14,6 +14,6 @@ public class EndGame : MonoBehaviour {
         }
     }
     public void GoBack() {
-        gm.ChangeState(GameManager.GameState.GAME);
+        gm.NewGame();
     }
 }

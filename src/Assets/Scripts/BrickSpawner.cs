@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BrickSpawner : MonoBehaviour {
     public GameObject Brick;
@@ -15,7 +13,8 @@ public class BrickSpawner : MonoBehaviour {
             for (int i = 0; i < 12; i++) {
                 for (int j = 0; j < 4; j++) {
                     Vector3 pos = new Vector3(-9 + 1.55f * i, 4 - 0.55f * j);
-                    Instantiate(Brick, pos, Quaternion.identity, transform);
+                    GameObject b = Instantiate(Brick, pos, Quaternion.identity, transform);
+                    b.GetComponent<Brick>().setDurability(j + 1);
                 }
             }
         }
@@ -23,10 +22,8 @@ public class BrickSpawner : MonoBehaviour {
 
     void Start() {
         gm = GameManager.GetInstance();
-        GameManager.changeStateDelegate += Construct;
+        GameManager.newGameDelegate += Construct;
         Construct();
-
-
     }
 
     void Update() {

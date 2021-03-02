@@ -9,12 +9,16 @@ public class GameManager {
     public delegate void ChangeStateDelegate();
     public static ChangeStateDelegate changeStateDelegate;
 
+    public delegate void NewGameChangeStateDelegate();
+    public static NewGameChangeStateDelegate newGameDelegate;
+
+
+
     private static GameManager instance;
 
     // Game elements
     public int lifes;
     public int points;
-
 
     private GameManager() {
         lifes = 3;
@@ -31,14 +35,15 @@ public class GameManager {
 
 
     public void ChangeState(GameState nextState) {
-        if (nextState == GameState.GAME)
-            Reset();
         gameState = nextState;
         changeStateDelegate();
     }
 
-    private void Reset() {
+    public void NewGame() {
         lifes = 3;
         points = 0;
+        ChangeState(GameState.GAME);
+        newGameDelegate();
+
     }
 }

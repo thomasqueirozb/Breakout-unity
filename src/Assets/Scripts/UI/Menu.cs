@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
     }
 
     public void Init() {
-        gm.ChangeState(GameManager.GameState.GAME);
+        gm.NewGame();
     }
 
 }

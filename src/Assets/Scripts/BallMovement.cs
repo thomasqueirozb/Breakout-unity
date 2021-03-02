@@ -15,6 +15,12 @@ public class BallMovement : MonoBehaviour {
         float dirY = Random.Range(1.0f, 5.0f);
 
         direction = new Vector3(dirX, dirY).normalized;
+        GameManager.newGameDelegate += ResetInitial;
+
+    }
+
+    void ResetInitial() {
+        transform.position = new Vector3(0.0f, -3.5f, 0.0f);
     }
 
     void Update() {

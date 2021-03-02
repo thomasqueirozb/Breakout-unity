@@ -8,6 +8,11 @@ public class PaddleMovement : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         gm = GameManager.GetInstance();
+        GameManager.newGameDelegate += Reset;
+    }
+
+    void Reset() {
+        transform.position = new Vector3(0, -4, 0);
     }
 
     // Update is called once per frame
